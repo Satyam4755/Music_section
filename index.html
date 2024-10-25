@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Music Store</title>
+</head>
+<style>
+    /* for desktops */
+    body {
+        background-color: maroon;
+    }
+
+    h2 {
+        color: blanchedalmond;
+        margin-left: 40%;
+        font-size: 150%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button {
+        background-color: rgba(240, 248, 255, 0);
+        border-style: none;
+    }
+
+    /* playlist */
+    .playlists {
+        position: absolute;
+        z-index: -1;
+        width: 18vw;
+        height: 35vh;
+        border-radius: 50%;
+
+        h5 {
+            font-size: 20px;
+        }
+
+
+    }
+
+    #playlist {
+        margin: 5% 8%;
+        background-color: gold;
+        color: darkblue;
+    }
+
+    #pop {
+        margin: 5% 50%;
+        background-color: rgb(0, 19, 41);
+        color: blanchedalmond;
+    }
+
+    #sad {
+        margin: 25% 8%;
+        background-color: rgb(17, 0, 255);
+        color: rgb(191, 224, 5);
+    }
+
+    #motivational {
+        margin: 25% 50%;
+        background-color: rgb(0, 255, 64);
+        color: rgb(1, 13, 61);
+    }
+
+    #love {
+        margin: 15% 29%;
+        background-color: rgb(255, 2, 107);
+        color: blanchedalmond;
+    }
+
+
+    /* dragger */
+    #progressBar {
+        width: 35vw;
+
+    }
+
+    /* for timing */
+    #timeInfo {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    hr {
+        border: 2px solid black;
+    }
+
+    /* for previous section */
+    .prev {
+        img {
+            width: 4vw;
+            height: 6vh;
+        }
+
+    }
+
+    #music_lists {
+        /* list of musics ke liye */
+        filter: opacity(0%);
+        position: absolute;
+        /********************absolute hai*******************/
+        z-index: -3;
+        padding-top: 1px;
+        margin: 2% 14%;
+        width: 35vh;
+        height: 68vh;
+        border-radius: 10px;
+        border: 0.5vh solid darkblue;
+        overflow: scroll;
+        background-color: darkblue;
+
+        .list {
+            font-size: larger;
+            color: blanchedalmond;
+        }
+
+        /* only for list */
+        .list_music {
+            height: 33vh;
+            margin: 2%;
+            border-radius: 10px;
+            border: 4px solid rgb(2, 0, 0);
+            padding: 0.5px;
+            overflow: scroll;
+        }
+
+        .Logo_Png {
+            margin-left: -1300%;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .controls {
+
+        /* display:flex ; */
+        height: 20vh;
+        text-align: center;
+        border: 3px solid darkblue;
+        margin: 2%;
+        overflow: hidden;
+        z-index: 1;
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color: rgb(108, 225, 5);
+        border-radius: 10px;
+
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .pausenplay {
+            width: 1000px;
+        }
+    }
+
+
+    /* work in progress */
+    .working {
+        position: absolute;
+        top: 30%;
+        left: 25%;
+        filter: opacity(0%);
+        z-index: -6;
+        border-radius: 10px;
+        background-color: darkblue;
+        color: blanchedalmond;
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        #prev{
+            width: 1vw;
+            height: 3vh;
+            margin-right: 100%;
+        }
+    }
+    /* for my iphone */
+    @media(max-width: 828px) {
+        body {
+        background-color: maroon;
+    }
+
+    h2 {
+        color: blanchedalmond;
+        margin-left: 18%;
+        font-size: 150%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button {
+        background-color: rgba(240, 248, 255, 0);
+        border-style: none;
+    }
+
+    /* playlist */
+    .playlists {
+        position: absolute;
+        z-index: -1;
+        width: 38vw;
+        height: 19vh;
+        border-radius: 50%;
+
+        h5 {
+            font-size: 20px;
+        }
+
+
+    }
+
+    #playlist {
+        margin: 5% 8%;
+        background-color: gold;
+        color: darkblue;
+    }
+
+    #pop {
+        margin: 5% 50%;
+        background-color: rgb(0, 19, 41);
+        color: blanchedalmond;
+    }
+
+    #sad {
+        margin: 50% 8%;
+        background-color: rgb(17, 0, 255);
+        color: rgb(191, 224, 5);
+    }
+
+    #motivational {
+        margin: 50% 50%;
+        background-color: rgb(0, 255, 64);
+        color: rgb(1, 13, 61);
+    }
+
+    #love {
+        margin: 90% 29%;
+        background-color: rgb(255, 2, 107);
+        color: blanchedalmond;
+    }
+
+
+    /* dragger */
+    #progressBar {
+        width: 35vw;
+
+    }
+
+    /* for timing */
+    #timeInfo {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    hr {
+        border: 2px solid black;
+    }
+
+    /* for previous section */
+    .prev {
+        img {
+            width: 4vw;
+            height: 2vh;
+        }
+
+    }
+
+    #music_lists {
+        /* list of musics ke liye */
+        filter: opacity(0%);
+        position: absolute;
+        /********************absolute hai*******************/
+        z-index: -3;
+        padding-top: 1px;
+        margin: 2% 14%;
+        width: 35vh;
+        height: 60vh;
+        border-radius: 10px;
+        border: 0.5vh solid darkblue;
+        overflow: scroll;
+        background-color: darkblue;
+
+        .list {
+            font-size: larger;
+            color: blanchedalmond;
+        }
+
+        /* only for list */
+        .list_music {
+            height: 33vh;
+            margin: 2%;
+            border-radius: 10px;
+            border: 4px solid rgb(2, 0, 0);
+            padding: 0.5px;
+            overflow: scroll;
+        }
+
+        .Logo_Png {
+            margin-left: -1300%;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .controls {
+
+        /* display:flex ; */
+        height: 20vh;
+        text-align: center;
+        border: 3px solid darkblue;
+        margin: 2%;
+        overflow: hidden;
+        z-index: 1;
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color: rgb(108, 225, 5);
+        border-radius: 10px;
+
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .pausenplay {
+            width: 1000px;
+        }
+    }
+
+
+    /* work in progress */
+    .working {
+        position: absolute;
+        top: 30%;
+        left: 25%;
+        filter: opacity(0%);
+        z-index: -6;
+        border-radius: 10px;
+        background-color: darkblue;
+        color: blanchedalmond;
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        #prev{
+            width: 1vw;
+            height: 3vh;
+            margin-right: 100%;
+        }
+    }
+}
+
+/* for other mobiles */
+@media (min-width: 205px)and(max-width: 325px) {
+        body {
+        background-color: maroon;
+    }
+
+    h2 {
+        color: blanchedalmond;
+        margin-left: 18%;
+        font-size: 150%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button {
+        background-color: rgba(240, 248, 255, 0);
+        border-style: none;
+    }
+
+    /* playlist */
+    .playlists {
+        position: absolute;
+        z-index: -1;
+        width: 38vw;
+        height: 15vh;
+        border-radius: 50%;
+
+        h5 {
+            font-size: 16px;
+        }
+
+
+    }
+
+    #playlist {
+        margin: 5% 8%;
+        background-color: gold;
+        color: darkblue;
+    }
+
+    #pop {
+        margin: 5% 53%;
+        background-color: rgb(0, 19, 41);
+        color: blanchedalmond;
+    }
+
+    #sad {
+        margin: 50% 8%;
+        background-color: rgb(17, 0, 255);
+        color: rgb(191, 224, 5);
+    }
+
+    #motivational {
+        margin: 50% 53%;
+        background-color: rgb(0, 255, 64);
+        color: rgb(1, 13, 61);
+    }
+
+    #love {
+        margin: 90% 29%;
+        background-color: rgb(255, 2, 107);
+        color: blanchedalmond;
+    }
+
+
+    /* dragger */
+    #progressBar {
+        width: 35vw;
+
+    }
+
+    /* for timing */
+    #timeInfo {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    hr {
+        border: 2px solid black;
+    }
+
+    /* for previous section */
+    .prev {
+        img {
+            width: 4vw;
+            height: 2vh;
+        }
+
+    }
+
+    #music_lists {
+        /* list of musics ke liye */
+        filter: opacity(0%);
+        position: absolute;
+        /********************absolute hai*******************/
+        z-index: -3;
+        padding-top: 1px;
+        margin: 2% 2%;
+        width: 35vh;
+        height: 60vh;
+        border-radius: 10px;
+        border: 0.5vh solid darkblue;
+        overflow: scroll;
+        background-color: darkblue;
+
+        .list {
+            font-size: larger;
+            color: blanchedalmond;
+        }
+
+        /* only for list */
+        .list_music {
+            height: 33vh;
+            margin: 2%;
+            border-radius: 10px;
+            border: 4px solid rgb(2, 0, 0);
+            padding: 0.5px;
+            overflow: scroll;
+        }
+
+        .Logo_Png {
+            margin-left: -1300%;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .controls {
+
+        /* display:flex ; */
+        height: 20vh;
+        text-align: center;
+        border: 3px solid darkblue;
+        margin: 2%;
+        overflow: hidden;
+        z-index: 1;
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color: rgb(108, 225, 5);
+        border-radius: 10px;
+
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .pausenplay {
+            width: 1000px;
+        }
+    }
+
+
+    /* work in progress */
+    .working {
+        position: absolute;
+        top: 30%;
+        left: 15%;
+        filter: opacity(0%);
+        z-index: -6;
+        border-radius: 10px;
+        background-color: darkblue;
+        color: blanchedalmond;
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        #prev{
+            width: 1vw;
+            height: 3vh;
+            margin-right: 100%;
+        }
+    }
+}
+</style>
+
+<body>
+    <h2>Personal Music Store</h2>
+    <div class="main" id="main">
+        
+        <!-- playlist buttons -->
+        <button id="playlist" class="playlists" onclick="opened()">
+            <h5>My_Playlist</h5>
+        </button>
+        <!-- pop songs -->
+        <button id="pop" class="playlists" onclick="opened1()">
+            <h5>Pop</h5>
+        </button>
+        <button id="sad" class="playlists" onclick="opened1()">
+            <h5>Sad</h5>
+        </button>
+        <button id="motivational" class="playlists" onclick="opened1()">
+            <h5>Motivational</h5>
+        </button>
+        <button id="love" class="playlists" onclick="opened1()">
+            <h5>Love</h5>
+        </button>
+        
+    </div>
+    <!-- inner music list -->
+    <div class="music_lists" id="music_lists">
+        <!-- previous button -->
+        <button id="prev" class="prev" onclick="back()">
+            <img src="pngs/left-arrow-direction-solid-icon-in-grey-colors-interface-signs-illustration-png.png"
+                alt="">
+        </button>
+        <div class="list_music">
+            <hr>
+            <button class="list" id="song1">Aja Ve Mahiya</button>
+            <hr>
+            <button class="list" id="song2">Bewafa</button>
+            <hr>
+            <button class="list" id="song3">Ayi Nhi</button>
+            <hr>
+            <button class="list" id="song4">Perfect</button>
+            <hr>
+            <button class="list" id="song5">Jawani</button>
+            <hr>
+            <button class="list" id="song6">Tu jana na piya</button>
+            <hr>
+            <button class="list" id="song7">Tu hai Kaha</button>
+            <hr>
+            <button class="list" id="song8">NAJA</button>
+            <hr>
+            <button class="list" id="song9">NA NA NA NA</button>
+            <hr>
+            <button class="list" id="song10">Pungi</button>
+            <hr>
+            <button class="list" id="song11">ghungroo toot gye</button>
+            <hr>
+            <button class="list" id="song12">gumshuda</button>
+            <hr>
+            <button class="list" id="song13">Dope Shope</button>
+            <hr>
+            <button class="list" id="song14">One Love</button>
+            <hr>
+            <button class="list" id="song15">No Love</button>
+            <hr>
+            <button class="list" id="song16">Aam Jahe Munde</button>
+            <hr>
+            <button class="list" id="song17">Millionare</button>
+            <hr>
+            <button class="list" id="song18">Maan Meri Jaan</button>
+            <hr>
+            <button class="list" id="song19">Tu ake dekhle</button>
+            <hr>
+
+        </div>
+        <div class="player">
+            <!-- audio player -->
+            <audio id="audioPlayer" src="musics/aja ve mahiya.mp3"></audio>
+            <!-- ****************************************************Controls********************** -->
+
+
+            <div class="controls">
+                <p id="currentSong">Aja ve Mahiya</p>
+                <button id="prevBtn"><img src="pngs/left.png" alt=""></button>
+                <button id="playPauseBtn"><img class="pausenplay" src="pngs/7540.png_12002.png" alt=""></button>
+                <button id="nextBtn"><img src="pngs/right-red-arrow-5484.png" alt=""></button>
+
+
+                <!-- for dragger line  -->
+                <input type="range" id="progressBar" value="0" min="0" max="100" step="1">
+                <!-- for timing -->
+                <div id="timeInfo">
+                    <span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- work in progress!!! -->
+    <div class="working" id="working">
+        <!-- previous button -->
+        <button id="prev" class="prev" onclick="back1()">
+            <img src="pngs/left-arrow-direction-solid-icon-in-grey-colors-interface-signs-illustration-png.png" alt="">
+        </button>
+        <p>Working in progress!!!</p>
+    </div>
+    <!-- scripting -->
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeDisplay = document.getElementById('currentTime');
+        const music_lists = document.getElementById("music_lists")
+        const playList = document.getElementById("playlist")
+        const pop = document.getElementById("pop")
+        const sad = document.getElementById("sad")
+        const motivational = document.getElementById("motivational")
+        const love = document.getElementById("love")
+        const list_musics = document.querySelectorAll(".playlists")
+        const working = document.getElementById("working")
+        const main = document.getElementById("main")
+        const totalDurationDisplay = document.getElementById('totalDuration');
+        const currentSong = document.getElementById('currentSong');
+
+        // Array of songs and song buttons
+        const songs = [
+            { name: 'Aja Ve Mahiya', path: 'musics/aja ve mahiya.mp3' },
+            { name: 'Bewafa', path: 'musics/bewafa.mp3' },
+            { name: 'Ayi Nhi', path: 'musics/ayi nhi.mp3' },
+            { name: 'Perfect', path: 'musics/perfect.mp3' },
+            { name: 'Jawani', path: 'musics/jawani.mp3' },
+            { name: 'Tu jana na piya', path: 'musics/Tu jana na Piya.mp3' },
+            { name: 'Tu hai Kaha', path: 'musics/Tu hai kaha.mp3' },
+            { name: 'NAJA', path: 'musics/NAJA.mp3' },
+            { name: 'NA NA NA NA', path: 'musics/na-na-na-na.mp3' },
+            { name: 'Pungi', path: 'musics/pungi.mp3' },
+            { name: 'Ghungroo toot gye', path: 'musics/ghungroo toot gye.mp3' },
+            { name: 'Gumshuda', path: 'musics/gumshuda.mp3' },
+            { name: 'Dope Shope', path: 'musics/dope shope.mp3' },
+            { name: 'One Love', path: 'musics/one love.mp3' },
+            { name: 'No Love', path: 'musics/no-love.mp3' },
+            { name: 'Aam Jahe Munde', path: 'musics/aam jahe munde.mp3' },
+            { name: 'Millionare', path: 'musics/millionare.mp3' },
+            { name: 'Maan Meri Jaan', path: 'musics/maan meri jaan.mp3' },
+            { name: 'Tu Aake Dekhle', path: 'musics/Tu ake dekhle.mp3' }
+        ];
+        let currentSongIndex = 0;
+
+        // Load the first song initially
+        loadSong(songs[currentSongIndex].path);
+
+        // functions for all functionings
+        // for previous page
+        function back() {
+            music_lists.style = "filter: opacity(0%); z-index:-5"
+            list_musics.forEach(music => {
+                music.style = "filter: opacity(100%); z-index:1"
+                main.style.filter="blur(0px)"
+            });
+        }
+        function back1() {
+            working.style = "filter: opacity(0%); z-index:-5"
+            list_musics.forEach(music => {
+                music.style = "filter: opacity(100%); z-index:1;"
+                main.style.filter="blur(0px)"
+            });
+        }
+        // for opening the playlist
+        function opened() {
+            main.style.filter="blur(10px)"
+            music_lists.style = "filter: opacity(100%); z-index:1";
+            // music_lists.style="filter:blur(0px)" 
+            list_musics.forEach(music => {
+                music.style = "filter: opacity(0%); z-index:-5"
+            });
+            
+        }
+        // for other buttons
+        function opened1() {
+            working.style = "filter: opacity(100%); z-index: 1"
+            main.style.filter="blur(10px)"
+        }
+
+        // Load and play the song
+        function loadSong(song) {
+            audioPlayer.src = song;
+            audioPlayer.play();
+            playPauseBtn.innerHTML = `<img src="pngs/7540.png_1200.png" alt="">`;
+            audioPlayer.addEventListener('loadedmetadata', () => {
+                totalDurationDisplay.textContent = formatTime(audioPlayer.duration);
+            });
+        }
+
+        // Play or pause song
+        playPauseBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.innerHTML = `<img src="pngs/7540.png_1200.png" alt="">`;
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.innerHTML = `<img src="pngs/7540.png_12002.png" alt="">`;
+            }
+        });
+
+        // Update progress bar automatically as the song plays
+        audioPlayer.addEventListener('timeupdate', () => {
+            if (audioPlayer.duration) {
+                const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.value = progress;
+                currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
+            }
+        });
+
+        // Drag the progress bar to seek a part of the song
+        progressBar.addEventListener('input', () => {
+            const seekTime = (progressBar.value / 100) * audioPlayer.duration;
+            audioPlayer.currentTime = seekTime;
+        });
+
+        // Play next song
+        nextBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(songs[currentSongIndex].path);
+            currentSong.textContent = songs[currentSongIndex].name;
+        });
+
+        // Play previous song
+        prevBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[currentSongIndex].path);
+            currentSong.textContent = songs[currentSongIndex].name;
+        });
+
+        // Automatically play next song when the current song ends
+        audioPlayer.addEventListener('ended', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(songs[currentSongIndex].path);
+            currentSong.textContent = songs[currentSongIndex].name;
+        });
+
+        // Display the current time in MM:SS format
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // function for  loading the song when clicked
+
+
+        function selectSong(index) {
+            currentSongIndex = index;
+            loadSong(songs[currentSongIndex].path);
+            currentSong.textContent = songs[currentSongIndex].name;
+        }
+
+        // Loop to add event listeners to each song button
+        for (let i = 0; i < songs.length; i++) {
+            document.getElementById(`song${i + 1}`).addEventListener('click', () => selectSong(i));
+        }
+
+
+    </script>
+
+
+
+    <!-- only my playlist button is working but the remaing are still not working -->
+</body>
+
+</html>
